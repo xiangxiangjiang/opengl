@@ -229,7 +229,6 @@ int main()
 		
 		trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));//缩放0.5
 		trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0, 0, 1));//绕z旋转90°
-
 		int transformLoc = glGetUniformLocation(shader->ID, "transform");//获取参数id
 		glUniformMatrix4fv(transformLoc,1,GL_FALSE,glm::value_ptr(trans));//设置参数
 		glActiveTexture(GL_TEXTURE0);
