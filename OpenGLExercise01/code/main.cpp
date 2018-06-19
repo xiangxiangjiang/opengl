@@ -4,6 +4,10 @@
 #define GLEW_STATIC
 #include<GL/glew.h>
 #include<GLFW/glfw3.h>
+#include"glm/glm.hpp"
+#include"glm/gtc/matrix_transform.hpp"
+#include"glm/gtc/type_ptr.hpp"
+
 
 void processInput(GLFWwindow *window) {
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
@@ -183,6 +187,21 @@ int main()
 	glEnableVertexAttribArray(2);//使能参数2
 
 
+	//矩阵计算测试
+	//移动测试
+	glm::vec4 vec(1, 0, 0, 1);//向量x,y,z,w
+	glm::mat4 trans = glm::mat4(1);  //构建单位矩阵
+	trans = glm::translate(trans, glm::vec3(1, 1, 0));//移动1,1,0,返回变换矩阵
+	vec = trans * vec;  //变换
+	std::cout << vec.x << vec.y << vec.z << vec.w << std::endl;
+	//旋转测试
+	trans = glm::mat4(1);  //构建单位矩阵
+	trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0, 0, 1));//绕z旋转90°
+	trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));//缩放0.5
+
+
+
+
 	while (!glfwWindowShouldClose(window))
 	{
 		processInput(window);
@@ -205,6 +224,14 @@ int main()
 		*/
 		//导入纹理
 		//glBindTexture(GL_TEXTURE_2D, texture1);
+
+		trans = glm::mat4(1);  //构建单位矩阵
+		
+		trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));//缩放0.5
+		trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0, 0, 1));//绕z旋转90°
+
+		int transformLoc = glGetUniformLocation(shader->ID, "transform");//获取参数id
+		glUniformMatrix4fv(transformLoc,1,GL_FALSE,glm::value_ptr(trans));//设置参数
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture1);
 		glActiveTexture(GL_TEXTURE1);
