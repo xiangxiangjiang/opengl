@@ -227,6 +227,8 @@ int main()
 
 		trans = glm::mat4(1);  //构建单位矩阵
 		
+		//变换
+
 		trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));//缩放0.5
 		trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0, 0, 1));//绕z旋转90°
 		int transformLoc = glGetUniformLocation(shader->ID, "transform");//获取参数id
