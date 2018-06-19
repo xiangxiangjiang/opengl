@@ -1,0 +1,12 @@
+#version 330 core									
+layout(location = 0) in vec3 aPos;					//读入参数0
+layout(location = 1) in vec3 aColor;				  //读入参数1
+layout(location = 2) in vec2 aTexCoord;				  //读入参数1 纹理坐标
+out vec4 vertexColor;       //定义一个颜色输出
+out vec2 TexCoord;          //纹理坐标
+void main(){																						
+	gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);
+	//vertexColor = vec4(0.5,0.0,0.0,1.0);
+	vertexColor = vec4(aColor,1.0);
+	TexCoord = aTexCoord;
+}

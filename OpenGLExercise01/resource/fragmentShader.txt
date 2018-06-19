@@ -1,0 +1,15 @@
+#version 330 core							  
+out vec4 FragColor;						 
+in vec4 vertexColor;
+//uniform vec4 ourColor; // 在OpenGL程序代码中设定这个变量
+in 	vec2 TexCoord;
+uniform sampler2D ourTexture1;
+uniform sampler2D ourTexture2;
+void main()								 
+{											  
+	
+	//FragColor = vertexColor;
+	//FragColor = texture(ourTexture1,TexCoord)*vertexColor;
+	FragColor = mix(texture(ourTexture1, TexCoord), texture(ourTexture2, TexCoord), 0.2);//两张纹理混合
+	
+}
