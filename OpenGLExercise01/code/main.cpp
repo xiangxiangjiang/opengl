@@ -18,11 +18,53 @@ void processInput(GLFWwindow *window) {
 float vertices[] = {
 	// first triangle
 
-	//     ---- 位置 ----       ---- 颜色 ----     - 纹理坐标 -
-	0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // 右上
-	0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // 右下
-	-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // 左下
-	-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // 左上
+	//     ---- 位置 ----       ---- 颜色 ----     - 纹理坐标(在纹理上的坐标) -
+	//0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f,   1.0f, 1.0f,   // 右上
+	//0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f,   1.0f, 0.0f,   // 右下
+	//-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f,   0.0f, 0.0f,   // 左下
+	//-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f,   0.0f, 1.0f    // 左上
+	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+	0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+	0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+
+	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+	0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+	0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+	-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+
+	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+	0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+
+	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
+	0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+	0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+
+	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+	0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
+	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+
 };
 
 unsigned int indices[] = {
@@ -56,6 +98,8 @@ unsigned int indices[] = {
 //"	//FragColor = ourColor;\n"
 //"}\n";
 
+int screenWidth = 800;
+int screenHeight = 600;
 
 int main() 
 {
@@ -64,7 +108,7 @@ int main()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);//低版本号
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);//配置
 
-	GLFWwindow* window = glfwCreateWindow(800, 600, "My openGL game", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(screenWidth,screenHeight, "My openGL game", NULL, NULL);
 	if (window == NULL) {
 		printf("open window failed");
 		glfwTerminate();
@@ -86,8 +130,10 @@ int main()
 	//设置OpenGL参数
 	//glEnable(GL_CULL_FACE);//开启面剔除，默认不剔除
 	//glCullFace(GL_BACK);    //剔除背面
-
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//线框模式
+	glEnable(GL_DEPTH_TEST);//开启深度测试
+
+
 
 	Shader* shader = new Shader("resource/vertexShader.txt","resource/fragmentShader.txt");//创建shader
 
@@ -175,20 +221,14 @@ int main()
 	glUniform1i(glGetUniformLocation(shader->ID, "ourTexture2"), 1);//分配纹理单元1 对应GL_TEXTURE1
 
 
-
-
-
-
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)(0*sizeof(float)));//参数0，顶点的参数个数，float类型，不归一化，间隔，偏移
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(0*sizeof(float)));//参数0，顶点的参数个数，float类型，不归一化，间隔，偏移
 	glEnableVertexAttribArray(0);//使能参数0
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)(3 * sizeof(float)));//参数1，颜色的参数个数，float类型，不归一化，间隔，偏移
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float)));//参数1，贴图的参数个数，float类型，不归一化，间隔，偏移
 	glEnableVertexAttribArray(1);//使能参数1
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void *)(6 * sizeof(float)));//参数2，颜色的参数个数，float类型，不归一化，间隔，偏移
-	glEnableVertexAttribArray(2);//使能参数2
+	
 
-
-	//矩阵计算测试
-	//移动测试
+	////矩阵计算测试
+	////移动测试
 	glm::vec4 vec(1, 0, 0, 1);//向量x,y,z,w
 	glm::mat4 trans = glm::mat4(1);  //构建单位矩阵
 	trans = glm::translate(trans, glm::vec3(1, 1, 0));//移动1,1,0,返回变换矩阵
@@ -200,6 +240,28 @@ int main()
 	trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));//缩放0.5
 
 
+	//空间变换
+	glm::mat4 model = glm::mat4(1.0f);//构建单位阵,模型到世界
+	model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1, 0, 0));//局部到世界坐标（原点0,0,0），并且绕x旋转-55度
+	glm::mat4 view = glm::mat4(1);//世界到相机
+	view = glm::translate(view, glm::vec3(0, 0, -3));
+
+	glm::mat4 projection = glm::mat4(1);//投影矩阵
+	projection = glm::perspective(glm::radians(45.0f),(float)screenWidth/(float)screenHeight,0.1f,100.0f);
+
+	//定义10个立方体位置，在这10个位置画
+	glm::vec3 cubePositions[] = {
+		glm::vec3(0.0f,  0.0f,  0.0f),
+		glm::vec3(2.0f,  5.0f, -15.0f),
+		glm::vec3(-1.5f, -2.2f, -2.5f),
+		glm::vec3(-3.8f, -2.0f, -12.3f),
+		glm::vec3(2.4f, -0.4f, -3.5f),
+		glm::vec3(-1.7f,  3.0f, -7.5f),
+		glm::vec3(1.3f, -2.0f, -2.5f),
+		glm::vec3(1.5f,  2.0f, -2.5f),
+		glm::vec3(1.5f,  0.2f, -1.5f),
+		glm::vec3(-1.3f,  1.0f, -1.5f)
+	};
 
 
 	while (!glfwWindowShouldClose(window))
@@ -207,7 +269,7 @@ int main()
 		processInput(window);
 
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
 		//从cup获取时间，修改shader输出的颜色
 		/*float timeValue = glfwGetTime();
 		float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
@@ -218,28 +280,47 @@ int main()
 		//画图	
 		shader->use();
 		glBindVertexArray(VAO);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-		/*
-		第一个参数指定了我们绘制的模式，这个和glDrawArrays的一样。第二个参数是我们打算绘制顶点的个数，这里填6，也就是说我们一共需要绘制6个顶点。第三个参数是索引的类型，这里是GL_UNSIGNED_INT。最后一个参数里我们可以指定EBO中的偏移量（或者传递一个索引数组，但是这是当你不在使用索引缓冲对象的时候），但是我们会在这里填写0。
-		*/
-		//导入纹理
-		//glBindTexture(GL_TEXTURE_2D, texture1);
 
-		trans = glm::mat4(1);  //构建单位矩阵
-		
-		//变换
 
-		trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));//缩放0.5
-		trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0, 0, 1));//绕z旋转90°
-		int transformLoc = glGetUniformLocation(shader->ID, "transform");//获取参数id
-		glUniformMatrix4fv(transformLoc,1,GL_FALSE,glm::value_ptr(trans));//设置参数
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture1);
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, texture2);
 
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-		//glDrawArrays(GL_TRIANGLES, 0, 6);//第一个顶点，一共6个顶点
+
+		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+		/*
+		第一个参数指定了我们绘制的模式，这个和glDrawArrays的一样。第二个参数是我们打算绘制顶点的个数，这里填6，也就是说我们一共需要绘制6个顶点。第三个参数是索引的类型，这里是GL_UNSIGNED_INT。最后一个参数里我们可以指定EBO中的偏移量（或者传递一个索引数组，但是这是当你不在使用索引缓冲对象的时候），但是我们会在这里填写0。
+		*/
+		//导入纹理
+		//glBindTexture(GL_TEXTURE_2D, texture1);
+		for (unsigned int i = 0; i < 10; i++)
+		{
+
+			// calculate the model matrix for each object and pass it to shader before drawing
+			trans = glm::mat4(1);  //构建单位矩阵
+			//变换
+			trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));//缩放0.5
+			trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0, 0, 1));//绕z旋转90°
+
+			model = glm::mat4(1);
+			//运算顺序，先写的后执行
+			model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(1.0f, 0.3f, 0.5f));
+			model = glm::translate(model, cubePositions[i]);
+			//model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1));
+
+			int transformLoc = glGetUniformLocation(shader->ID, "transform");//获取缩放参数id
+			glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));//设置缩放参数
+			int modelLoc = glGetUniformLocation(shader->ID, "model");//获取模型到世界变换参数id
+			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));//设置模型到世界变换参数
+			int viewLoc = glGetUniformLocation(shader->ID, "view");//获取世界到相机参数id
+			glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));//设置世界到相机参数
+			int projectionLoc = glGetUniformLocation(shader->ID, "projection");//获取相机到投影参数id
+			glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));//设置相机到投影参数
+			//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+			glDrawArrays(GL_TRIANGLES, 0, 36);//第一个顶点，一共36个顶点	
+		}
+		
 
 
 		glfwSwapBuffers(window);
