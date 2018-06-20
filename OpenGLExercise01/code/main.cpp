@@ -9,11 +9,6 @@
 #include"glm/gtc/type_ptr.hpp"
 
 
-void processInput(GLFWwindow *window) {
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
-		glfwSetWindowShouldClose(window, true);
-	}
-}
 
 float vertices[] = {
 	// first triangle
@@ -100,6 +95,85 @@ unsigned int indices[] = {
 
 int screenWidth = 800;
 int screenHeight = 600;
+//摄像机位置参数
+glm::vec3 cameraPos = glm::vec3(0, 0, 5);
+glm::vec3 cameraFront = glm::vec3(0, 0, -1);
+glm::vec3 cameraUp = glm::vec3(0, 1, 0);
+//时间记录
+float deltaTime = 0;//时间间隔
+float lastTime = 0;//上一帧时间
+//鼠标移动视角有关
+bool firstMouse = true;
+float yaw = 0;
+float pitch = 0;
+float lastX = screenWidth/2;
+float lastY = screenHeight/2;
+//滚动相关
+float fov = 45;  //视野
+
+void processInput(GLFWwindow *window) {
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+		glfwSetWindowShouldClose(window, true);
+	}
+	float cameraSpeed = 2.5f*deltaTime;//一帧距离变化量
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
+		cameraPos += cameraSpeed * cameraFront;
+	}
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
+		cameraPos -= cameraSpeed * cameraFront;
+	}
+	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
+		cameraPos += cameraSpeed * glm::normalize(glm::cross(cameraUp,cameraFront));
+	}
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
+		cameraPos += cameraSpeed * glm::normalize(glm::cross(cameraFront, cameraUp));
+	}
+}
+
+void mouse_callback(GLFWwindow* window, double xpos, double ypos) //鼠标时间回调函数
+{
+	if (firstMouse) {
+		lastX = xpos;
+		lastY = ypos;
+		firstMouse = false;
+	}
+	float xOffset = xpos - lastX;
+	float yOffset = lastY - ypos;//屏幕是左上0,0
+	lastX = xpos;
+	lastY = ypos;
+	float sensitivity = 0.05f;//灵敏度
+	xOffset *= sensitivity;
+	yOffset *= sensitivity;
+	yaw += xOffset;
+	pitch += yOffset;
+	if (pitch > 89) {
+		pitch = 89;
+	}
+	if (pitch < -89) {
+		pitch = -89;
+	}
+
+	glm::vec3 front;
+	front.x = cos(glm::radians(yaw))*cos(glm::radians(pitch));
+	front.y = sin(glm::radians(pitch));
+	front.z = sin(glm::radians(yaw))*cos(glm::radians(pitch));  //z轴正方向为初始方向
+	cameraFront = glm::normalize(front);
+
+
+}
+
+void scroll_callback(GLFWwindow *window, double xoffset, double yoffset) {
+	if (fov >= 1 && fov <= 45) {
+		fov -= yoffset;
+	}
+	if (fov <= 1) {
+		fov = 1;
+	}
+	if (fov >= 45) {
+		fov = 45;
+	}
+}
+
 
 int main() 
 {
@@ -132,6 +206,10 @@ int main()
 	//glCullFace(GL_BACK);    //剔除背面
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);//线框模式
 	glEnable(GL_DEPTH_TEST);//开启深度测试
+	//配置鼠标
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);//关闭光标
+	glfwSetCursorPosCallback(window, mouse_callback);//配置鼠标回调函数
+	glfwSetScrollCallback(window, scroll_callback);//设置滚轮回调
 
 
 
@@ -247,7 +325,7 @@ int main()
 	view = glm::translate(view, glm::vec3(0, 0, -3));
 
 	glm::mat4 projection = glm::mat4(1);//投影矩阵
-	projection = glm::perspective(glm::radians(45.0f),(float)screenWidth/(float)screenHeight,0.1f,100.0f);
+	projection = glm::perspective(glm::radians(fov),(float)screenWidth/(float)screenHeight,0.1f,100.0f);//fov，宽高比，近距离，远距离
 
 	//定义10个立方体位置，在这10个位置画
 	glm::vec3 cubePositions[] = {
@@ -262,10 +340,15 @@ int main()
 		glm::vec3(1.5f,  0.2f, -1.5f),
 		glm::vec3(-1.3f,  1.0f, -1.5f)
 	};
-
+	
+	
+	lastTime = glfwGetTime();
 
 	while (!glfwWindowShouldClose(window))
 	{
+		float currentFrameTime = glfwGetTime();
+		deltaTime = currentFrameTime - lastTime;
+		lastTime = currentFrameTime;
 		processInput(window);
 
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -301,13 +384,23 @@ int main()
 			trans = glm::mat4(1);  //构建单位矩阵
 			//变换
 			trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));//缩放0.5
-			trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0, 0, 1));//绕z旋转90°
+			trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0, 1, 1));//绕z旋转90°
 
 			model = glm::mat4(1);
 			//运算顺序，先写的后执行
-			model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(1.0f, 0.3f, 0.5f));
-			model = glm::translate(model, cubePositions[i]);
-			//model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1));
+			//model = glm::rotate(model, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));//世界坐标下旋转
+			model = glm::translate(model, cubePositions[i]);//世界坐标下移动
+			//观擦空间，摄像机绕0，0,0旋转
+			view = glm::mat4(1);
+			//float radius = 10.0f;//旋转半径
+			//float camX = sin(glfwGetTime())*radius;//x位置
+			//float camZ = cos(glfwGetTime())*radius;//z位置
+			//view = glm::lookAt(glm::vec3(camX, 0, camZ), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));//摄像机位置，摄像机关注点，上方向
+			view = glm::lookAt(cameraPos,cameraFront+cameraPos, cameraUp);//摄像机位置，摄像机关注点，上方向
+			
+			projection = glm::mat4(1);//投影矩阵
+			projection = glm::perspective(glm::radians(fov), (float)screenWidth / (float)screenHeight, 0.1f, 100.0f);//fov，宽高比，近距离，远距离
+
 
 			int transformLoc = glGetUniformLocation(shader->ID, "transform");//获取缩放参数id
 			glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));//设置缩放参数
