@@ -19,26 +19,28 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Shader.h" />
-    <ClInclude Include="include\stb_image.h" />
+    <ClInclude Include="..\include\Shader.h" />
+    <ClInclude Include="..\include\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="code\main.cpp" />
-    <ClCompile Include="code\Shader.cpp" />
-    <ClCompile Include="code\stb_image.cpp" />
+    <ClCompile Include="..\code\Shader.cpp" />
+    <ClCompile Include="..\code\stb_image.cpp" />
+    <ClCompile Include="..\opengl\code\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="resource\container.jpg" />
+    <Image Include="..\resource\awesomeface.png" />
+    <Image Include="..\resource\container.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="resource\fragmentShader.txt" />
-    <Text Include="resource\vertexShader.txt" />
+    <Text Include="..\resource\fragmentShader.txt" />
+    <Text Include="..\resource\vertexShader.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{68DD2552-EEF7-4588-AEC6-87BB92D9DAD7}</ProjectGuid>
     <RootNamespace>OpenGLExercise01</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <ProjectName>openGL</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -92,10 +94,10 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>F:\数学\opengl\work\CPP\OpenGLExercise02\OpenGLExercise01\include;D:\Program Files\OpenGL\glfw-3.2.1.bin.WIN32\include;D:\Program Files\OpenGL\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\数学\opengl\work\CPP\OpenGLExercise02\include;F:\数学\opengl\work\CPP\OpenGLExercise02\glfw-3.2.1.bin.WIN32\include;F:\数学\opengl\work\CPP\OpenGLExercise02\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>D:\Program Files\OpenGL\glfw-3.2.1.bin.WIN32\lib-vc2015;D:\Program Files\OpenGL\glew-2.1.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>F:\数学\opengl\work\CPP\OpenGLExercise02\glfw-3.2.1.bin.WIN32\lib-vc2015;F:\数学\opengl\work\CPP\OpenGLExercise02\glew-2.1.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glew32s.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -120,12 +122,12 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>F:\数学\opengl\work\CPP\OpenGLExercise02\OpenGLExercise01\include;D:\Program Files\OpenGL\glfw-3.2.1.bin.WIN32\include;D:\Program Files\OpenGL\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\数学\opengl\work\CPP\OpenGLExercise02\include;F:\数学\opengl\work\CPP\OpenGLExercise02\glfw-3.2.1.bin.WIN32\include;F:\数学\opengl\work\CPP\OpenGLExercise02\glew-2.1.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>D:\Program Files\OpenGL\glfw-3.2.1.bin.WIN32\lib-vc2015;D:\Program Files\OpenGL\glew-2.1.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>F:\数学\opengl\work\CPP\OpenGLExercise02\glfw-3.2.1.bin.WIN32\lib-vc2015;F:\数学\opengl\work\CPP\OpenGLExercise02\glew-2.1.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glew32s.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

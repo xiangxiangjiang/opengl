@@ -213,7 +213,7 @@ int main()
 
 
 
-	Shader* shader = new Shader("resource/vertexShader.txt","resource/fragmentShader.txt");//创建shader
+	Shader* shader = new Shader("F:/数学/opengl/work/CPP/OpenGLExercise02/resource/vertexShader.txt","F:/数学/opengl/work/CPP/OpenGLExercise02/resource/fragmentShader.txt");//创建shader
 
 	unsigned int VAO;   //VAO ID
 
@@ -239,7 +239,7 @@ int main()
 	stbi_set_flip_vertically_on_load(true);//翻转图片，避免倒转
 	//生成第一章张纹理
 	int width1, height1, nrChannels1;//纹理，宽高，通道数
-	unsigned char* data1 = stbi_load("resource/container.jpg",&width1,&height1,&nrChannels1,0);//处理纹理
+	unsigned char* data1 = stbi_load("F:/数学/opengl/work/CPP/OpenGLExercise02/resource/container.jpg",&width1,&height1,&nrChannels1,0);//处理纹理
 	//生成纹理
 	unsigned int texture1;
 	glGenTextures(1, &texture1);
@@ -270,7 +270,7 @@ int main()
 
 	//生成第二张纹理
 	int width2, height2, nrChannels2;//纹理，宽高，通道数
-	unsigned char* data2 = stbi_load("resource/awesomeface.png", &width2, &height2, &nrChannels2, 0);//处理纹理
+	unsigned char* data2 = stbi_load("F:/数学/opengl/work/CPP/OpenGLExercise02/resource/awesomeface.png", &width2, &height2, &nrChannels2, 0);//处理纹理
 	
 	//生成纹理
 	unsigned int texture2;
