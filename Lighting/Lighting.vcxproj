@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\code\Camera.cpp" />
     <ClCompile Include="..\code\Shader.cpp" />
     <ClCompile Include="..\code\stb_image.cpp" />
     <ClCompile Include="code\main.cpp" />
@@ -132,10 +133,15 @@
     <Image Include="..\resource\container.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\resource\1_color_fragmentShader.txt" />
+    <Text Include="..\resource\1_color_vertexShader.txt" />
+    <Text Include="..\resource\1_lamp_fragmentShader.txt" />
+    <Text Include="..\resource\1_lamp_vertexShader.txt" />
     <Text Include="..\resource\fragmentShader.txt" />
     <Text Include="..\resource\vertexShader.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\Camera.h" />
     <ClInclude Include="..\include\Shader.h" />
     <ClInclude Include="..\include\stb_image.h" />
   </ItemGroup>

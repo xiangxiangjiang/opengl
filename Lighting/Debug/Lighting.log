@@ -1,13 +1,16 @@
 ﻿  main.cpp
-f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(109): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
-f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(110): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
-f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(136): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(137): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(140): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(141): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(142): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(143): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(167): warning C4244: “-=”: 从“double”转换到“float”，可能丢失数据
-f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(345): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(349): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(72): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(73): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(106): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(107): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(110): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(111): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(112): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(113): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(145): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(224): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(228): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(234): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(235): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\lighting\code\main.cpp(236): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
   Lighting.vcxproj -> F:\数学\opengl\work\CPP\OpenGLExercise02\Debug\Lighting.exe

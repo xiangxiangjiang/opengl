@@ -1,0 +1,41 @@
+﻿  Shader.cpp
+  stb_image.cpp
+  main.cpp
+f:\数学\opengl\work\cpp\openglexercise02\opengl\code\main.cpp(109): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\opengl\code\main.cpp(110): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\opengl\code\main.cpp(136): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\opengl\code\main.cpp(137): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\opengl\code\main.cpp(140): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\opengl\code\main.cpp(141): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\opengl\code\main.cpp(142): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\opengl\code\main.cpp(143): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\opengl\code\main.cpp(167): warning C4244: “-=”: 从“double”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\opengl\code\main.cpp(345): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+f:\数学\opengl\work\cpp\openglexercise02\opengl\code\main.cpp(349): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+Shader.obj : error LNK2001: 无法解析的外部符号 __imp____glewUseProgram
+Shader.obj : error LNK2001: 无法解析的外部符号 __imp____glewGetShaderiv
+Shader.obj : error LNK2001: 无法解析的外部符号 __imp____glewCompileShader
+Shader.obj : error LNK2001: 无法解析的外部符号 __imp____glewCreateShader
+Shader.obj : error LNK2001: 无法解析的外部符号 __imp____glewCreateProgram
+Shader.obj : error LNK2001: 无法解析的外部符号 __imp____glewGetShaderInfoLog
+Shader.obj : error LNK2001: 无法解析的外部符号 __imp____glewGetProgramiv
+Shader.obj : error LNK2001: 无法解析的外部符号 __imp____glewAttachShader
+Shader.obj : error LNK2001: 无法解析的外部符号 __imp____glewShaderSource
+Shader.obj : error LNK2001: 无法解析的外部符号 __imp____glewGetProgramInfoLog
+Shader.obj : error LNK2001: 无法解析的外部符号 __imp____glewDeleteShader
+Shader.obj : error LNK2001: 无法解析的外部符号 __imp____glewLinkProgram
+main.obj : error LNK2001: 无法解析的外部符号 __imp____glewEnableVertexAttribArray
+main.obj : error LNK2001: 无法解析的外部符号 __imp____glewBindVertexArray
+main.obj : error LNK2001: 无法解析的外部符号 __imp____glewVertexAttribPointer
+main.obj : error LNK2001: 无法解析的外部符号 __imp____glewBindBuffer
+main.obj : error LNK2001: 无法解析的外部符号 __imp____glewUniform1i
+main.obj : error LNK2001: 无法解析的外部符号 __imp____glewGetUniformLocation
+main.obj : error LNK2001: 无法解析的外部符号 __imp____glewBufferData
+main.obj : error LNK2001: 无法解析的外部符号 __imp____glewActiveTexture
+main.obj : error LNK2001: 无法解析的外部符号 __imp____glewGenVertexArrays
+main.obj : error LNK2001: 无法解析的外部符号 __imp____glewUniformMatrix4fv
+main.obj : error LNK2001: 无法解析的外部符号 __imp__glewExperimental
+main.obj : error LNK2001: 无法解析的外部符号 __imp____glewGenBuffers
+main.obj : error LNK2001: 无法解析的外部符号 __imp____glewGenerateMipmap
+main.obj : error LNK2001: 无法解析的外部符号 __imp__glewInit@0
+F:\数学\opengl\work\CPP\OpenGLExercise02\Release\openGL.exe : fatal error LNK1120: 26 个无法解析的外部命令

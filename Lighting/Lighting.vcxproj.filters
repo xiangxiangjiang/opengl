@@ -24,6 +24,9 @@
     <ClCompile Include="code\main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\code\Camera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\resource\awesomeface.png">
@@ -40,12 +43,27 @@
     <Text Include="..\resource\vertexShader.txt">
       <Filter>资源文件</Filter>
     </Text>
+    <Text Include="..\resource\1_color_fragmentShader.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="..\resource\1_color_vertexShader.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="..\resource\1_lamp_fragmentShader.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="..\resource\1_lamp_vertexShader.txt">
+      <Filter>资源文件</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\Shader.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\include\stb_image.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Camera.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
